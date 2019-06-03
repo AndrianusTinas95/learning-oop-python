@@ -1,29 +1,32 @@
 class Hero:
-    # class variable
+    
     count = 0    
     def __init__(self,name,health,power,armor):
-        # is instance variablr
         self.name   = name
         self.health = health
         self.power  = power
         self.armor  = armor
         Hero.count  +=1
 
-    # method tanpa return 
-    def siapa(self) :
-        print("nama ku adalah " + self.name)
-    
-    # method dengan argument tanpa reaturn
-    def healthUp(self,up):
-        self.health += up
+    def attack(self, lawan) :
+        print(self.name + " menyerang " + lawan.name)
+        lawan.attacked(self,self.power)
 
-    # method dengan return 
-    def getHealth(self) :
-        return self.health
+    def attacked(self, lawan,power_lawan) :
+        print(self.name + " diserang " + lawan.name)
 
-sniper  = Hero('sniper',100,10,5)
-cai     = Hero('cai',90,5,10)
+        attack_received = power_lawan / self.armor
+        print("serangan sebesar " + str(attack_received))
 
-sniper.siapa()
-sniper.healthUp(10)
-print("health ", sniper.getHealth())
+        self.health -= attack_received
+        print("darah " + self.name + " sekarang tersisa " , str(self.health))
+
+sniper      = Hero('sniper', 100 ,20, 5)
+rikimaru    = Hero('rikimaru',200,10,10)
+
+sniper.attack(rikimaru)
+print("\n")
+rikimaru.attack(sniper)
+rikimaru.attack(sniper)
+rikimaru.attack(sniper)
+rikimaru.attack(sniper)
