@@ -10,12 +10,12 @@ class Hero:
 
     def attack(self, lawan) :
         print(self.name + " menyerang " + lawan.name)
-        lawan.attacked(self,self.power)
+        lawan.attacked(self)
 
-    def attacked(self, lawan,power_lawan) :
+    def attacked(self, lawan) :
         print(self.name + " diserang " + lawan.name)
 
-        attack_received = power_lawan / self.armor
+        attack_received = lawan.power / self.armor
         print("serangan sebesar " + str(attack_received))
 
         self.health -= attack_received
