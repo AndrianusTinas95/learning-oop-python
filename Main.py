@@ -1,33 +1,33 @@
 class Hero :
 
-    count = 0
+    __count = 0
 
-    def __init__(self,name,health,power) :
+    def __init__(self,name) :
         self.__name = name
-        self.__health = health
-        self.__power = power
-    
-    # getter
-    def getName(self) :
-        return self.__name
-    
-    def getHealth(self) :
-        return self.__health
-    
-    #setter
-    def attacked(self,attackPower) :
-        self.__health -= attackPower
-    
-    def setPower(self,power) :
-        self.__power = power
+        # self.__health = health
+        # self.__power = power
+        Hero.__count += 1
 
+    # berlaku untuk object
+    def getCount(self) :
+        return Hero.__count
 
-#awal game
-earthshaker = Hero("earthshaker",50,5)
+    #berlaku untuk class
+    def getCountA() :
+        return Hero.__count
+    
+    # method static (decorator)
+    @staticmethod
+    def getCountB() :
+        return Hero.__count
+    
+    @classmethod
+    def getCountC(cls) :
+        return cls.__count
 
-#game berjalan
-print(earthshaker.getName())
-print(earthshaker.getHealth())
-earthshaker.attacked(5)
-
-print(earthshaker.getHealth())
+sniper    = Hero("sniper")
+print(Hero.getCountB())
+rikimaru  = Hero("rikimaru")
+print(sniper.getCountC())
+drowranger= Hero("drowranger")
+print(Hero.getCountC())
