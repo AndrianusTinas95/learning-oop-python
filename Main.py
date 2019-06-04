@@ -1,32 +1,18 @@
-class Hero:
-    
-    count = 0    
-    def __init__(self,name,health,power,armor):
-        self.name   = name
-        self.health = health
-        self.power  = power
-        self.armor  = armor
-        Hero.count  +=1
+import tkinter
 
-    def attack(self, lawan) :
-        print(self.name + " menyerang " + lawan.name)
-        lawan.attacked(self)
+main_window = tkinter.Tk()
 
-    def attacked(self, lawan) :
-        print(self.name + " diserang " + lawan.name)
+label1  = tkinter.Label(main_window,text="hallo world")
+label2  = tkinter.Label(main_window,text="hallo cai")
 
-        attack_received = lawan.power / self.armor
-        print("serangan sebesar " + str(attack_received))
+tombol1 = tkinter.Button(main_window,text="tombol1")
+tombol2 = tkinter.Button(main_window,text="tombol2")
+# methood positioning
+label1.pack()
+label2.pack()
+tombol1.pack()
+tombol2.pack()
 
-        self.health -= attack_received
-        print("darah " + self.name + " sekarang tersisa " , str(self.health))
+# method GUI
 
-sniper      = Hero('sniper', 100 ,20, 5)
-rikimaru    = Hero('rikimaru',200,10,10)
-
-sniper.attack(rikimaru)
-print("\n")
-rikimaru.attack(sniper)
-rikimaru.attack(sniper)
-rikimaru.attack(sniper)
-rikimaru.attack(sniper)
+main_window.mainloop()
