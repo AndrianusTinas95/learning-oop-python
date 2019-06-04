@@ -1,33 +1,49 @@
 class Hero :
 
-    __count = 0
+    # __count = 0
 
-    def __init__(self,name) :
-        self.__name = name
-        # self.__health = health
-        # self.__power = power
-        Hero.__count += 1
+    def __init__(self,name,health,armor) :
+        self.name = name
+        self.__health = health
+        self.__armor = armor
+        # Hero.__count += 1
+        # self.info = "name {} : \n\thealth: {}".format(self.name,self.__health)
 
-    # berlaku untuk object
-    def getCount(self) :
-        return Hero.__count
-
-    #berlaku untuk class
-    def getCountA() :
-        return Hero.__count
+    @property
+    def info(self) :
+        return  "name {} : \n\thealth: {}".format(self.name,self.__health)
+   
+    @property
+    def armor(self) :
+        pass
     
-    # method static (decorator)
-    @staticmethod
-    def getCountB() :
-        return Hero.__count
+    @armor.getter
+    def armor(self) :
+        return self.__armor
+   
+    @armor.setter
+    def armor(self, input) :
+        self.__armor = input
     
-    @classmethod
-    def getCountC(cls) :
-        return cls.__count
+    @armor.deleter
+    def armor(self) :
+        print("armor di delete")
+        self.__armor = None
+   
 
-sniper    = Hero("sniper")
-print(Hero.getCountB())
-rikimaru  = Hero("rikimaru")
-print(sniper.getCountC())
-drowranger= Hero("drowranger")
-print(Hero.getCountC())
+sniper = Hero("sniper",100,10)
+print(sniper.info)
+sniper.name ="cai"
+print(sniper.info)
+
+print("\nget and set __armor")
+print(sniper.armor)
+print(sniper.__dict__)
+sniper.armor = 20
+print(sniper.armor)
+print(sniper.__dict__)
+
+print("delet armor")
+
+del sniper.armor
+print(sniper.__dict__)
