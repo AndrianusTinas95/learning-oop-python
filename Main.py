@@ -1,18 +1,19 @@
-import tkinter
+class Hero :
 
-main_window = tkinter.Tk()
+    count = 0
+    __privateCount=0
 
-label1  = tkinter.Label(main_window,text="hallo world")
-label2  = tkinter.Label(main_window,text="hallo cai")
+    def __init__(self,name,health) :
+        self.name   =   name
+        self.health =   health
 
-tombol1 = tkinter.Button(main_window,text="tombol1")
-tombol2 = tkinter.Button(main_window,text="tombol2")
-# methood positioning
-label1.pack()
-label2.pack()
-tombol1.pack()
-tombol2.pack()
+        # variable instance private
+        self.__private = "private"
 
-# method GUI
+        # variable instance protected
+        self._protected = "protected"
 
-main_window.mainloop()
+lina    =   Hero("lina",100)
+
+print(lina.__dict__)
+# lina.private = "tes saja"
