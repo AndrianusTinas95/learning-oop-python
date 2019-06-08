@@ -4,20 +4,30 @@ class Hero :
 		self.name = name
 		self.health= health
 
+	@property
+	def info(self):
+		pass
+
+	@info.getter
+	def info(self):
+		print("{} punya health {}".format(self.name,self.health))
+
 class Hero_intelligent(Hero):
 	def __init__(self,name):
-#		Hero.__init__(self,name)
- 		super().__init__(name,100)
+		super().__init__(name,100)
+
 
 class Hero_strength(Hero):
 	def __init__(self,name):
 		super().__init__(name,200)
 
 sniper = Hero("sniper",100)
-axe	= Hero_strength('axe')
+#axe	= Hero_strength('axe')
 lina	=Hero_intelligent('lina')
 
-#print(sniper.name)
-print(lina.__dict__)
 
-print(axe.__dict__)
+#print(sniper.info())
+#print(axe.__dict__)
+
+lina.info
+
