@@ -2,20 +2,22 @@ class Hero :
 
 	def __init__(self,name,health):
 		self.name = name
-		self.healthBase = health
+		self.health= health
 
 class Hero_intelligent(Hero):
-	pass
+	def __init__(self,name):
+#		Hero.__init__(self,name)
+ 		super().__init__(name,100)
 
 class Hero_strength(Hero):
-	pass
+	def __init__(self,name):
+		super().__init__(name,200)
 
 sniper = Hero("sniper",100)
-axe	= Hero_strength('axe',200)
+axe	= Hero_strength('axe')
+lina	=Hero_intelligent('lina')
 
-lina	=Hero_intelligent('lina',90)
-
-print(sniper.name)
+#print(sniper.name)
 print(lina.__dict__)
 
-print(axe.name)
+print(axe.__dict__)
